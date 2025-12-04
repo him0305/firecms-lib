@@ -9,5 +9,10 @@ export default defineConfig({
   clean: true,
   minify: false,
   outDir: 'dist',
+  external: ['react', 'react-dom', '@firecms/core', '@firecms/ui'],
+  treeshake: true,
+  esbuildOptions(options) {
+    options.jsx = 'automatic';
+  },
 });
 

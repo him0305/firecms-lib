@@ -1,7 +1,7 @@
 {
   "name": "@him0305/firecms-lib",
-  "version": "1.0.0",
-  "description": "A FireCMS library",
+  "version": "0.0.1",
+  "description": "A custom library of reusable FireCMS fields and previews for TypeScript and React.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,27 +18,41 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\"",
-    "prepublishOnly": "npm run build"
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx}\"",
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "typescript",
+    "react",
     "library",
-    "firecms"
+    "firecms",
+    "firecms-components"
   ],
-  "author": "",
+  "author": "him0305",
   "license": "MIT",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.24.0",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
     "@types/node": "^20.10.0",
-    "@typescript-eslint/eslint-plugin": "^6.13.0",
-    "@typescript-eslint/parser": "^6.13.0",
-    "eslint": "^8.54.0",
+    "@types/react": "^19.2.7",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
     "prettier": "^3.1.0",
     "tsup": "^8.0.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "typescript-eslint": "^8.48.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
@@ -46,6 +60,15 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/him0305/firecms-lib.git"
+  },
+  "peerDependencies": {
+    "@firecms/core": "^3.0.0",
+    "@firecms/ui": "^3.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@firecms/core": "^3.0.0",
+    "@firecms/ui": "^3.0.0",
+    "react": "^19.2.1"
   }
 }
-

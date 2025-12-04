@@ -1,6 +1,6 @@
 # @him0305/firecms-lib
 
-A TypeScript library published to GitHub Packages.
+A React + TypeScript library for FireCMS published to GitHub Packages.
 
 ## Installation
 
@@ -26,6 +26,12 @@ Replace `YOUR_GITHUB_TOKEN` with your personal access token.
 ### 3. Install the package
 
 ```bash
+pnpm add @him0305/firecms-lib
+```
+
+Or with npm:
+
+```bash
 npm install @him0305/firecms-lib
 ```
 
@@ -35,24 +41,34 @@ Or with yarn:
 yarn add @him0305/firecms-lib
 ```
 
-Or with pnpm:
-
-```bash
-pnpm add @him0305/firecms-lib
-```
-
 ## Usage
 
 ```typescript
-import { greet, Calculator } from '@him0305/firecms-lib';
+import { 
+  referenceAdditionalField,
+  ExportCollectionActions,
+  ReferenceField,
+  AvatarField,
+  AvatarPreview,
+  ReferencePreview,
+  ReferenceArrayPreview
+} from '@him0305/firecms-lib';
 
-// Use the greet function
-console.log(greet('World')); // Output: Hello, World!
+// Use additional fields in your FireCMS collections
+const myAdditionalField = referenceAdditionalField({
+  key: 'related_item',
+  name: 'Related Item',
+  path: 'items',
+});
 
-// Use the Calculator class
-const calc = new Calculator();
-console.log(calc.add(5, 3)); // Output: 8
-console.log(calc.subtract(10, 4)); // Output: 6
+// Use collection actions
+// Add ExportCollectionActions to your collection configuration
+
+// Use custom fields in your property configurations
+// field: ReferenceField or AvatarField
+
+// Use custom previews
+// Preview: AvatarPreview, ReferencePreview, or ReferenceArrayPreview
 ```
 
 ## Development
@@ -65,24 +81,31 @@ git clone https://github.com/him0305/firecms-lib.git
 cd firecms-lib
 ```
 
-2. Install dependencies:
+2. Install pnpm (if not already installed):
 ```bash
-npm install
+npm install -g pnpm
+# or
+corepack enable
+```
+
+3. Install dependencies:
+```bash
+pnpm install
 ```
 
 ### Available Scripts
 
-- `npm run build` - Build the library for production
-- `npm run dev` - Build the library in watch mode for development
-- `npm run lint` - Run ESLint to check for code issues
-- `npm run lint:fix` - Run ESLint and automatically fix issues
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check if code is formatted correctly
+- `pnpm build` - Build the library for production
+- `pnpm dev` - Build the library in watch mode for development
+- `pnpm lint` - Run ESLint to check for code issues
+- `pnpm lint:fix` - Run ESLint and automatically fix issues
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check if code is formatted correctly
 
 ### Building
 
 ```bash
-npm run build
+pnpm build
 ```
 
 This will generate the compiled library in the `dist/` directory with:
@@ -98,9 +121,9 @@ This library uses GitHub Actions for automated publishing to GitHub Packages.
 
 1. Update the version in `package.json`:
 ```bash
-npm version patch  # for bug fixes
-npm version minor  # for new features
-npm version major  # for breaking changes
+pnpm version patch  # for bug fixes
+pnpm version minor  # for new features
+pnpm version major  # for breaking changes
 ```
 
 2. Push the version tag to GitHub:
@@ -115,8 +138,8 @@ git push origin main --tags
 If you need to publish manually:
 
 1. Ensure you're authenticated with GitHub Packages
-2. Build the library: `npm run build`
-3. Publish: `npm publish`
+2. Build the library: `pnpm build`
+3. Publish: `pnpm publish`
 
 Note: You need a GitHub Personal Access Token with `write:packages` permission.
 
