@@ -6,6 +6,9 @@ export function ImagesPreview({
   height,
   size,
 }: PropertyPreviewProps<string[]>) {
+  if (!values) return null;
+  if (values.length === 0) return null;
+
   return (
     <div
       style={{

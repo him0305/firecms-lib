@@ -6,6 +6,8 @@ export function ImagePreview({
   height,
   size
 }: PropertyPreviewProps<string>) {
+  if (!value) return null;
+
   return <img
     src={value}
     style={{
