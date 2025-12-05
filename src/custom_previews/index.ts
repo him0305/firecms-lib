@@ -1,3 +1,3 @@
 export * from './avatar';
-export * from './reference';
-export * from './reference_array';
+export * from './string_array_reference';
+export * from './string_reference';
