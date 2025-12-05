@@ -24,7 +24,7 @@ export default function StringRefField({
     <ReferenceFieldBinding
       {...props}
       customProps={customProps}
-      property={{ ...property, path } as unknown as typeof property}
+      property={{ ...property, path }}
       value={value ? new EntityReference(value, path) : undefined}
     />
   );
