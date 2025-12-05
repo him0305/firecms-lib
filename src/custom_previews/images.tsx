@@ -24,6 +24,7 @@ export function ImagesPreview({
           style={{
             objectFit: "contain",
             borderRadius: "4px",
+            maxHeight: '100%',
           }}
         />
       ))}
