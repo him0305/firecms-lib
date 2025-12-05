@@ -9,12 +9,14 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -26,6 +28,25 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@him0305'
           cache: 'pnpm'
+
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          TAG=${GITHUB_REF#refs/tags/v}
+          echo "version=$TAG" >> $GITHUB_OUTPUT
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump version
+        run: pnpm version ${{ steps.get_version.outputs.version }} --no-git-tag-version
+
+      - name: Commit release version
+        run: |
+          git add package.json
+          git commit -m "release: v${{ steps.get_version.outputs.version }}"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -40,4 +61,7 @@ jobs:
         run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push release commit
+        run: git push origin HEAD:main
 
