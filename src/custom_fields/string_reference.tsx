@@ -8,7 +8,7 @@ interface StringReferenceFieldProps {
   path: string;
 }
 
-export default function StringRefField({
+export function StringRefField({
   property,
   customProps,
   value,

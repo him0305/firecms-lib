@@ -9,7 +9,7 @@ type StringArrayReferencePreviewCustomProps = {
   previewProperties?: string[];
 };
 
-export default function StringArrayRefPreview({
+export function StringArrayRefPreview({
   value: values,
   customProps,
   size = 'medium',

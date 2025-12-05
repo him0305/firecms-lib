@@ -1,5 +1,5 @@
 import { buildProperty } from '@firecms/core';
-import ReferenceArrayPreview from '../custom_previews/string_array_reference';
+import { StringArrayRefPreview } from '../custom_previews/string_array_reference';
 
 export function buildStringArrayRefProperty({
   name,
@@ -20,7 +20,7 @@ export function buildStringArrayRefProperty({
     of: {
       dataType: 'string',
     },
-    Preview: ReferenceArrayPreview,
+    Preview: StringArrayRefPreview,
     customProps: { path, previewProperties },
   });
 }

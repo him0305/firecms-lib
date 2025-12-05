@@ -1,6 +1,6 @@
 import { buildProperty } from '@firecms/core';
-import ReferenceField from '../custom_fields/string_reference';
-import ReferencePreview from '../custom_previews/string_reference';
+import { StringRefField } from '../custom_fields/string_reference';
+import { StringRefPreview } from '../custom_previews/string_reference';
 
 export function buildStringRefProperty({
   name,
@@ -21,8 +21,8 @@ export function buildStringRefProperty({
     columnWidth: columnWidth,
     dataType: 'string',
     name,
-    Preview: ReferencePreview,
-    Field: ReferenceField,
+    Preview: StringRefPreview,
+    Field: StringRefField,
     customProps: { path, previewProperties },
   });
 }

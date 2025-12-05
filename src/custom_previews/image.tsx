@@ -1,7 +1,7 @@
 import { PropertyPreviewProps } from '@firecms/core';
 import { getPreviewOffset } from '../utils';
 
-export default function ImagePreview({
+export function ImagePreview({
   value,
   height,
   size

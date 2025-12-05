@@ -9,7 +9,7 @@ type StringReferencePreviewCustomProps = {
   previewProperties?: string[];
 };
 
-export default function StringRefPreview({
+export function StringRefPreview({
   value,
   customProps,
   size = 'medium',
