@@ -41,7 +41,7 @@ export const stringRefAdditionalField = <T extends AssumedEntityValues>({
     return (
       <ReferencePreview
         size={size}
-        reference={new EntityReference(pathValue, idValue)} />
+        reference={new EntityReference(idValue, pathValue)} />
     );
   },
 });
