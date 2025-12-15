@@ -6,23 +6,27 @@ import {
   ReferencePreview,
 } from '@firecms/core';
 
-type Extractor<T extends Record<string, unknown>> = (entity: Entity<T>) => string;
 
-function extractValue<T extends Record<string, unknown>>(value: string | Extractor<T>, entity: Entity<T>): string {
+type AssumedEntityValues = Record<string, unknown>;
+type Extractor<T extends AssumedEntityValues> = (entity: Entity<T>) => string;
+
+const defaultIdExtractor = (entity: Entity<AssumedEntityValues>) => entity.id;
+
+function extractValue<T extends AssumedEntityValues>(value: string | Extractor<T>, entity: Entity<T>): string {
   return typeof value === 'function' ? value(entity) : value;
 }
 
-export const stringRefAdditionalField = <T extends Record<string, unknown>>({
+export const stringRefAdditionalField = <T extends AssumedEntityValues>({
   key,
   name,
-  id = (entity: Entity<T>) => entity.id,
+  id = defaultIdExtractor,
   path,
   width,
   size = 'medium',
 }: {
   key: string;
   name: string;
-  id: string | Extractor<T>;
+  id?: string | Extractor<T>;
   path: string | Extractor<T>;
   width?: number;
   size?: PreviewSize;
