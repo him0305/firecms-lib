@@ -1,6 +1,6 @@
 {
   "name": "@him0305/firecms-lib",
-  "version": "3.3.0",
+  "version": "0.0.14",
   "description": "A custom library of reusable FireCMS fields and previews for TypeScript and React.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
